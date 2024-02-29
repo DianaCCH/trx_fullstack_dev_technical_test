@@ -9,11 +9,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { VehicleFormComponent } from './_components/vehicle-form/vehicle-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { SpinnerDialogComponent } from './_components/spinner-dialog/spinner-dialog.component';
 
 @NgModule({
   declarations: [
     ChipsTypeaheadComponent,
-    DropdownComponent
+    DropdownComponent,
+    VehicleFormComponent,
+    SpinnerDialogComponent
   ],
   imports: [
     CommonModule,
@@ -25,10 +30,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     ReactiveFormsModule,
     FormsModule,
+    MatInputModule
   ],
   exports: [
     ChipsTypeaheadComponent,
-    DropdownComponent
+    DropdownComponent,
+    VehicleFormComponent
   ]
 })
 export class SharedModule { }

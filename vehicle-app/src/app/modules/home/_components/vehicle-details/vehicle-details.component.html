@@ -1,1 +1,12 @@
-<p>vehicle-details works!</p>
+<div>
+    <h2 class="text-center">Vehicle Information</h2>
+    <app-vehicle-form></app-vehicle-form>
+    <div class="text-center">
+        <button [disabled]="!requiredFilledAndValid" *ngIf="isEdit" class="search-btn mt-2 text-center" mat-fab extended color="primary" (click)="save()">
+            Guardar
+        </button>
+        <button *ngIf="!isEdit" class="search-btn mt-2 text-center" mat-fab extended color="primary" (click)="addVehicle()">
+            Crear Vehiculo
+        </button>
+    </div>
+</div>

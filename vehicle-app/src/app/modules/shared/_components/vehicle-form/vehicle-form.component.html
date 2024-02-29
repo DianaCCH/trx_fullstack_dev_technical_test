@@ -1,0 +1,105 @@
+<div class="container mt-5">
+    <div class="header-info row">
+        <div class="col-md-4">
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Marca</mat-label>
+                <input [formControl]="marcaControl" matInput>
+                <mat-error *ngIf="marcaControl?.errors && marcaControl?.errors?.['required']">Field is
+                    required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4">
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Vim</mat-label>
+                <input [formControl]="vimControl" matInput>
+                <mat-error *ngIf="vimControl?.errors && vimControl?.errors?.['required']">Field is
+                    required</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col-md-4 text-right">
+            <mat-form-field floatLabel="always" appearance="outline">
+                <mat-label>Placa</mat-label>
+                <input [formControl]="placaControl" matInput placeholder="">
+                <mat-error *ngIf="placaControl?.errors && placaControl?.errors?.['required']">Field is
+                    required</mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <hr>
+    <div class="content-info mt-5">
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Modelo</mat-label>
+                    <input [formControl]="modeloControl" matInput>
+                    <mat-error *ngIf="modeloControl?.errors && modeloControl?.errors?.['required']">Field is
+                        required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 text-right">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Año</mat-label>
+                    <input [formControl]="anioControl" matInput>
+                    <mat-error *ngIf="anioControl?.errors && anioControl?.errors?.['required']">Field is
+                        required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Seguro</mat-label>
+                    <input [formControl]="seguroControl" matInput>
+                    <mat-error *ngIf="seguroControl?.errors && seguroControl?.errors?.['required']">Field is
+                        required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 text-right">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>No. Seguro</mat-label>
+                    <input [formControl]="numeroSeguroControl" matInput>
+                    <mat-error *ngIf="numeroSeguroControl?.errors && numeroSeguroControl?.errors?.['required']">Field is
+                        required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>No. Asientos</mat-label>
+                    <input [formControl]="numeroAsientosControl" matInput>
+                    <mat-error *ngIf="numeroAsientosControl?.errors && numeroAsientosControl?.errors?.['required']">Field is
+                        required</mat-error>
+
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 text-right">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Color</mat-label>
+                    <input [formControl]="colorControl" matInput>
+                    <mat-error *ngIf="colorControl?.errors && colorControl?.errors?.['required']">Field is
+                        required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-6">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>No. Economico</mat-label>
+                    <input [formControl]="numeroEconomicoControl" matInput>
+
+                    <mat-error *ngIf="numeroEconomicoControl?.errors && numeroEconomicoControl?.errors?.['required']">Field is
+                        required</mat-error>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6 text-right">
+                <mat-form-field floatLabel="always" appearance="outline">
+                    <mat-label>Ubicacion</mat-label>
+                    <input [formControl]="ubicacionControl" matInput>
+                    <mat-error *ngIf="ubicacionControl?.errors && ubicacionControl?.errors?.['required']">Field is
+                        required</mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+</div>

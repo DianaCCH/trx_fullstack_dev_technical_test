@@ -107,7 +107,6 @@ const deleteVehicle = async (req, res) => {
 const getVehiclesByFilter = async (req, res) => {
   try {
     const filters = req.query;
-    console.log(filters);
     const allVehicles = await vehicleService.getVehiclesByFilter(filters);
     res.send({ status: "OK", data: allVehicles });
   } catch (error) {

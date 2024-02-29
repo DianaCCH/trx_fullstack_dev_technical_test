@@ -69,7 +69,6 @@ const getVehiclesByFilter = async (filterParams) => {
     }
     const key = Object.keys(filterParams)[0];
     const values = filterParams[key].split(",")
-    console.log(values);
     const filteredData = [];
     allVehicles.vehicles?.forEach(item => {
       values.forEach(value => {
@@ -78,7 +77,6 @@ const getVehiclesByFilter = async (filterParams) => {
         }
       });
     });
-    console.log(filteredData);
     return filteredData;
   } catch (error) {
     throw error;

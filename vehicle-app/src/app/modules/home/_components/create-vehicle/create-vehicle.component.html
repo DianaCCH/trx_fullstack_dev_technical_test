@@ -1,0 +1,16 @@
+<div mat-dialog-title class="text-center">
+    <div class="flex items-center">
+        Agregar Vehiculo
+    </div>
+</div>
+<div class="ui-modal-body">
+    <app-vehicle-form></app-vehicle-form>
+</div>
+<div mat-dialog-actions class="footer m-2">
+    <button class="search-btn mt-2 text-center" mat-fab extended color="warn" (click)="onCancel()">
+        Cancelar
+    </button>
+    <button [disabled]="!requiredFilledAndValid" class="search-btn mt-2 text-center" mat-fab extended color="primary" (click)="onAdd()">
+        Crear Vehiculo
+    </button>
+</div>

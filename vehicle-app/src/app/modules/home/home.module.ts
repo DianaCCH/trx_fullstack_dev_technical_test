@@ -11,13 +11,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { SharedModule } from '../shared/shared.module';
+import { CreateVehicleComponent } from './_components/create-vehicle/create-vehicle.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     RoutesMapComponent,
     VehicleTableComponent,
     HomeComponent,
-    VehicleDetailsComponent
+    VehicleDetailsComponent,
+    CreateVehicleComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { SharedModule } from '../shared/shared.module';
     MatProgressSpinnerModule,
     MatIconModule,
     MatButtonModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule
   ],
   exports: [
     RoutesMapComponent,

@@ -31,7 +31,7 @@ export class VehicleService {
   }
 
   updateVehicle(updateVehicle: Vehicle): Observable<Response<Vehicle>> {
-    return this.http.patch<Response<Vehicle>>(`${this.apiUrl}${this._controller}/updateVehicle`, updateVehicle);
+    return this.http.patch<Response<Vehicle>>(`${this.apiUrl}${this._controller}/updateVehicle/${updateVehicle.id}`, updateVehicle);
   }
 
   removeVehicle(vehicleId: number): Observable<Response<Vehicle>> {

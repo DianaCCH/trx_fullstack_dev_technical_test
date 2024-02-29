@@ -1,8 +1,10 @@
 <div>
     <div class="filter-section">
         <app-dropdown [control]="filterTypeControl"></app-dropdown>
-        <app-chips-typeahead [control]="filterSearchControl" (getAllFilters)="refresh()" [listControl]="filterValuesControl" class="mx-2 search"></app-chips-typeahead>
-        <button [disabled]="!requiredFielsdAndValid" class="search-btn mt-2" mat-fab extended color="primary" (click)="search()">
+        <app-chips-typeahead [control]="filterSearchControl" (getAllFilters)="refresh()"
+            [listControl]="filterValuesControl" class="mx-2 search"></app-chips-typeahead>
+        <button [disabled]="!requiredFielsdAndValid" class="search-btn mt-2" mat-fab extended color="primary"
+            (click)="search()">
             Search
         </button>
     </div>
@@ -59,7 +61,6 @@
         <div class="message-container" *ngIf="!isLoading && !(dataSource.data.length > 0)">
             No Vehicles found ...
         </div>
-        <mat-progress-spinner mode="indeterminate" diameter="50" *ngIf="isLoading"></mat-progress-spinner>
         <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons
             aria-label="Select page of periodic elements">
         </mat-paginator>
