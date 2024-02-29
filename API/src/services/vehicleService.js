@@ -1,21 +1,13 @@
 const vehicle = require("../dataAccess/vehicle");
 
-const getAllVehicles = async (filterParams) => {
+const getAllVehicles = async () => {
   try {
     const allVehicles = await vehicle.getAllVehicles();
 
     if (allVehicles?.error) {
       throw { status: 500, message: error?.message || error };
     }
-    const filteredVehicles = allVehicles.vehicles?.filter(vehicle => {
-      let isValid = true;
-      for (key in filterParams) {
-        // console.log(key, vehicle[key], filterParams[key]);
-        isValid = isValid && vehicle[key] == filterParams[key];
-      }
-      return isValid;
-    });
-    return filteredVehicles;
+    return allVehicles.vehicles;
   } catch (error) {
     throw error;
   }
@@ -53,11 +45,41 @@ const updateVehicle = async (vehicleId, changes) => {
 
 const deleteVehicle = async (vehicleId) => {
   try {
-    const deletedVehicle = await vehicle.deleteVehicle(vehicleId);
-    if (deletedVehicle?.error) {
+    const { status, statusText } = await vehicle.deleteVehicle(vehicleId);
+    if (status != 204) {
+      throw { status: status, message: statusText };
+    }
+    const allVehicles = await vehicle.getAllVehicles();
+
+    if (allVehicles?.error) {
       throw { status: 500, message: error?.message || error };
     }
-    return deletedVehicle.vehicles;
+    return allVehicles.vehicles;
+  } catch (error) {
+    throw error;
+  }
+};
+
+const getVehiclesByFilter = async (filterParams) => {
+  try {
+    const allVehicles = await vehicle.getAllVehicles();
+
+    if (allVehicles?.error) {
+      throw { status: 500, message: error?.message || error };
+    }
+    const key = Object.keys(filterParams)[0];
+    const values = filterParams[key].split(",")
+    console.log(values);
+    const filteredData = [];
+    allVehicles.vehicles?.forEach(item => {
+      values.forEach(value => {
+        if (item[key].toLowerCase() == value.toLowerCase()) {
+          filteredData.push(item);
+        }
+      });
+    });
+    console.log(filteredData);
+    return filteredData;
   } catch (error) {
     throw error;
   }
@@ -65,6 +87,7 @@ const deleteVehicle = async (vehicleId) => {
 
 module.exports = {
   getAllVehicles,
+  getVehiclesByFilter,
   createNewVehicle,
   updateVehicle,
   deleteVehicle,

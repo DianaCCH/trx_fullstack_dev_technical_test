@@ -17,7 +17,7 @@ const createNewVehicle = async (newVehicle) => {
     const { status, statusText } = await supabase
       .from('vehicles')
       .insert(newVehicle);
-    return { status, statusText };;
+    return { status, statusText };
   } catch (error) {
     return error;
   }
@@ -38,12 +38,11 @@ const updateVehicle = async (vehicleId, changes) => {
 
 const deleteVehicle = async (vehicleId) => {
   try {
-    const { data, error } = await supabase
+    const { status, statusText } = await supabase
       .from('vehicles')
       .update({ estatus: false })
       .eq('id', vehicleId)
-      .select();
-    return { vehicles: data, error: error };
+    return { status, statusText };
   } catch (error) {
     return error;
   }

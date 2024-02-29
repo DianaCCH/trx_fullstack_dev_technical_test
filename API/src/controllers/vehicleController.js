@@ -2,8 +2,7 @@ const vehicleService = require("../services/vehicleService");
 
 const getAllVehicles = async (req, res) => {
   try {
-    const filters = req.query;
-    const allVehicles = await vehicleService.getAllVehicles(filters);
+    const allVehicles = await vehicleService.getAllVehicles();
     res.send({ status: "OK", data: allVehicles });
   } catch (error) {
     res
@@ -105,8 +104,22 @@ const deleteVehicle = async (req, res) => {
   }
 };
 
+const getVehiclesByFilter = async (req, res) => {
+  try {
+    const filters = req.query;
+    console.log(filters);
+    const allVehicles = await vehicleService.getVehiclesByFilter(filters);
+    res.send({ status: "OK", data: allVehicles });
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ status: "FAILED", data: { error: error?.message || error } });
+  }
+};
+
 module.exports = {
   getAllVehicles,
+  getVehiclesByFilter,
   createNewVehicle,
   updateVehicle,
   deleteVehicle,
