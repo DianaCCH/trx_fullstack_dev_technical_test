@@ -5,7 +5,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.API_KEY);
 
 const getAllVehicles = async () => {
   try {
-    const { data, error } = await supabase.from('vehicles').select('*').eq('estatus', true);
+    const { data, error } = await supabase.from('vehicles').select('*').eq('estatus', true).order('fecha_creacion', { ascending: false });
     return { vehicles: data, error: error };
   } catch (error) {
     return error;
