@@ -4,8 +4,11 @@
             (editVehicleInfo)="editVehicle($event)"></app-vehicle-table>
     </div>
     <div class="col-md-6">
-        <app-routes-map></app-routes-map>
-        <app-vehicle-details *ngIf="showVehicleInformation" (cancelSave)="cancelSave()"></app-vehicle-details>
-    </div>
+        <div style="width: 100%; height: 500px;">
+            <app-routes-map [source]="vehicleSource"></app-routes-map>
+        </div>
+        <div class="mt-5" style="width: 100%; height: 500px">
+            <app-vehicle-details *ngIf="showVehicleInformation" (cancelSave)="cancelSave()"></app-vehicle-details>
+        </div>
 
-</div>
+    </div>

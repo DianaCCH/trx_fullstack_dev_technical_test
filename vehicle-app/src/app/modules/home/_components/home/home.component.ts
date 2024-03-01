@@ -14,6 +14,11 @@ import { SpinnerDialogService } from '../../_services/spinner-dialog.service';
 })
 export class HomeComponent implements OnInit {
   private _showVehicleInfo = false;
+  vehicleSource = {
+    lat: 29.953845,
+    lng: -90.073431,
+  };
+
   constructor(
     private service: VehicleService,
     private vehicleState: VehicleStateService,
@@ -32,6 +37,11 @@ export class HomeComponent implements OnInit {
 
   showVehicleInfo(vehicleInfo: Vehicle) {
     this._showVehicleInfo = true;
+    const latLng = vehicleInfo.destino.split(',');
+    this.vehicleSource = {
+      lat: Number(latLng[0]),
+      lng: Number(latLng[1]),
+    }
     this.vehicleState.setInformatio(vehicleInfo);
     this.vehicleState.disableForm();
   }

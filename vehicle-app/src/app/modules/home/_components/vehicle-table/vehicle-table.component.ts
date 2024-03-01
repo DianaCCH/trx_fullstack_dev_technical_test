@@ -42,12 +42,12 @@ export class VehicleTableComponent implements OnInit, OnDestroy {
   }
 
   onClickRow(rowInfo: Vehicle) {
-    console.log(rowInfo);
+    // console.log(rowInfo);
     this.showVehicleInfo.emit(rowInfo)
   }
 
   edit(rowInfo: Vehicle) {
-    console.log("edit", rowInfo);
+    // console.log("edit", rowInfo);
     this.editVehicleInfo.emit(rowInfo);
   }
 

@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Vehicle } from '../_models/vehicle';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleStateService {
   vehicleState!: UntypedFormGroup;
+  locationChanged$: Subject<void> = new Subject<void>();
+
   constructor(private fb: UntypedFormBuilder,) { }
 
   initializeFilterForm() {
@@ -29,6 +32,7 @@ export class VehicleStateService {
 
   setInformatio(vehicle: Vehicle) {
     this.vehicleState?.patchValue(vehicle);
+    this.locationChanged$.next();
   }
 
   enableForm() {
