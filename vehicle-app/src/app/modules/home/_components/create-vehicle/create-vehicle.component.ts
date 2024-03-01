@@ -6,6 +6,7 @@ import { VehicleService } from '../../_services/vehicle.service';
 import { UntypedFormGroup } from '@angular/forms';
 import { CodeStatus, LOCATION } from 'src/app/const/const';
 import { Subject, takeUntil } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-vehicle',
@@ -19,7 +20,8 @@ export class CreateVehicleComponent implements OnInit, OnDestroy {
     private vehicleState: VehicleStateService,
     private service: VehicleService,
     @Inject(LOCATION) private location: Location,
-    private spinner: SpinnerDialogService) {
+    private spinner: SpinnerDialogService,
+    private snackBar: MatSnackBar) {
 
   }
   ngOnDestroy(): void {
@@ -37,15 +39,22 @@ export class CreateVehicleComponent implements OnInit, OnDestroy {
   }
 
   onAdd() {
+    this.spinner.startSpinner();
     const vehicle = this.vehicleForm.getRawValue();
     this.service.createNewVehicle(vehicle)
       .pipe(takeUntil(this._onDestroy$))
       .subscribe(result => {
         if (result.status === CodeStatus.OK) {
           this.spinner.closeSpinner();
+          this.openSnackBar("Vehiculo Agregado Correctamente")
           this.location.reload();
         }
+        this.spinner.closeSpinner();
       });
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', { duration: 2000 });
   }
 
   get requiredFilledAndValid() {

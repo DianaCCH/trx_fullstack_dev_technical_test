@@ -16,7 +16,7 @@ const getAllVehicles = async () => {
 const createNewVehicle = async (newVehicle) => {
   try {
     const { status, statusText } = await vehicle.createNewVehicle(newVehicle);
-
+    
     if (status != 201) {
       throw { status: status, message: statusText };
     }

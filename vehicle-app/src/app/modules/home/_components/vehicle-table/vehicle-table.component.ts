@@ -9,6 +9,7 @@ import { Response } from '../../_models/response';
 import { FilterService } from '../../_services/filter.service';
 import { UntypedFormControl } from '@angular/forms';
 import { SpinnerDialogService } from '../../_services/spinner-dialog.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-vehicle-table',
@@ -27,7 +28,8 @@ export class VehicleTableComponent implements OnInit, OnDestroy {
   constructor(
     private service: VehicleService,
     private filterService: FilterService,
-    private spinner: SpinnerDialogService) { }
+    private spinner: SpinnerDialogService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.getVehicles();
@@ -50,14 +52,16 @@ export class VehicleTableComponent implements OnInit, OnDestroy {
   }
 
   remove(row: Vehicle) {
-    console.log("remove", row);
+    this.spinner.startSpinner();
     this.service.removeVehicle(row.id)
       .pipe(takeUntil(this._onDestroy$))
       .subscribe(result => {
         if (result.status === CodeStatus.OK) {
+          this.snackBar.open('Vehiculo Eliminado Correctamente', '', { duration: 2000 });
           this.dataSource = new MatTableDataSource(result.data);
           this.dataSource.paginator = this.paginator;
         }
+        this.spinner.closeSpinner();
       });
   }
 

@@ -47,6 +47,7 @@ const createNewVehicle = async (req, res) => {
     modelo: body.modelo,
     anio: body.anio,
     color: body.color,
+    destino: "29.972839, -90.065639"
   };
 
   try {

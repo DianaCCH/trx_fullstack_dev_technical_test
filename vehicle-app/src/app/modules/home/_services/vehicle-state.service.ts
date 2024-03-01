@@ -11,15 +11,15 @@ export class VehicleStateService {
 
   initializeFilterForm() {
     this.vehicleState = this.fb.group({
-      placa: new UntypedFormControl('', [Validators.required]),
-      numero_economico: new UntypedFormControl('', [Validators.required]),
+      placa: new UntypedFormControl('', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
+      numero_economico: new UntypedFormControl('', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
       vim: new UntypedFormControl('', [Validators.required]),
-      asientos: new UntypedFormControl('', [Validators.required]),
+      asientos: new UntypedFormControl('', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
       seguro: new UntypedFormControl('', [Validators.required]),
       numero_seguro: new UntypedFormControl('', [Validators.required]),
       modelo: new UntypedFormControl('', [Validators.required]),
       marca: new UntypedFormControl('', [Validators.required]),
-      anio: new UntypedFormControl('', [Validators.required]),
+      anio: new UntypedFormControl('', [Validators.required, Validators.pattern(/^[0-9]\d*$/)]),
       color: new UntypedFormControl('', [Validators.required]),
       id: new UntypedFormControl(''),
       destino: new UntypedFormControl('', [Validators.required]),

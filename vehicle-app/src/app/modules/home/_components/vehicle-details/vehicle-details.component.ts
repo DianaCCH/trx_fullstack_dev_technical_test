@@ -7,6 +7,7 @@ import { VehicleService } from '../../_services/vehicle.service';
 import { UntypedFormGroup } from '@angular/forms';
 import { SpinnerDialogService } from '../../_services/spinner-dialog.service';
 import { Subject, takeUntil } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -20,7 +21,9 @@ export class VehicleDetailsComponent implements OnDestroy {
     private dialog: MatDialog,
     @Inject(LOCATION) private location: Location,
     private service: VehicleService,
-    private spinner: SpinnerDialogService) { }
+    private spinner: SpinnerDialogService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnDestroy(): void {
     this._onDestroy$.next();
@@ -34,6 +37,7 @@ export class VehicleDetailsComponent implements OnDestroy {
       .pipe(takeUntil(this._onDestroy$))
       .subscribe((result) => {
         if (result.status === CodeStatus.OK) {
+          this.snackBar.open('Vehiculo Actualizado Correctamente', '', { duration: 2000 });
           this.spinner.closeSpinner();
           this.location.reload();
         }
