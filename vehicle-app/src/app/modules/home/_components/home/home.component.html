@@ -1,0 +1,14 @@
+<div class="mx-2 row">
+    <div class="table" class="col-md-6">
+        <app-vehicle-table (showVehicleInfo)="showVehicleInfo($event)"
+            (editVehicleInfo)="editVehicle($event)"></app-vehicle-table>
+    </div>
+    <div class="col-md-6">
+        <div style="width: 100%; height: 500px;">
+            <app-routes-map [source]="vehicleSource"></app-routes-map>
+        </div>
+        <div class="mt-5" style="width: 100%; height: 500px">
+            <app-vehicle-details *ngIf="showVehicleInformation" (cancelSave)="cancelSave()"></app-vehicle-details>
+        </div>
+
+    </div>

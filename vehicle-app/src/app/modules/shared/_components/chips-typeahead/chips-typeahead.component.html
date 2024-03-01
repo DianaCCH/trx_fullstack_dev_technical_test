@@ -1,0 +1,14 @@
+<mat-form-field style="width: 100%;" class="form-field" appearance="outline">
+    <mat-chip-grid #chipGrid aria-label="Enter filter" [formControl]="formControl">
+        <mat-chip-row *ngFor="let keyword of keywords" (removed)="removeKeyword(keyword)">
+            {{keyword}}
+            <button matChipRemove aria-label="'remove ' + keyword">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip-row>
+    </mat-chip-grid>
+    <input placeholder="Search" [formControl]="control" class="icon" [matChipInputFor]="chipGrid"
+        (matChipInputTokenEnd)="add($event)" />
+    <mat-error *ngIf="control?.errors && control?.errors?.['required']">Field is
+        required</mat-error>
+</mat-form-field>

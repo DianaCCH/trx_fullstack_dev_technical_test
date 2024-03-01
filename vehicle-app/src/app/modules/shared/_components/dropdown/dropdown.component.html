@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline">
+    <mat-select [formControl]="control" placeholder="Filter By">
+        <mat-option *ngFor="let filter of filters" [value]="filter.value">
+            {{filter.viewValue}}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="control?.errors && control?.errors?.['required']">Field is
+        required</mat-error>
+</mat-form-field>
