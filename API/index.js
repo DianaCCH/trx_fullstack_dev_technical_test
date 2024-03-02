@@ -1,10 +1,8 @@
-const express = require("express");
-const vehicleRoutes = require("./v1/routes/vehicleRoutes");
+const app = require("./src/app")
+const vehicleRoutes = require("./src/v1/routes/vehicleRoutes");
 var cors = require('cors')
-const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(express.json());
 app.use(cors())
 app.use("/api/v1/vehicle", vehicleRoutes);
 
