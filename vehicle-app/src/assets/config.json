@@ -1,5 +1,5 @@
 {
     "apiConfig": {
-        "baseUrl": "http://localhost:5000/"
+         "baseUrl": "https://trx-fullstack-dev-technical-test-eta.vercel.app/"
     }
 }
